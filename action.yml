@@ -1,0 +1,27 @@
+name: Codecov Config Validator Action
+description: Validate Codecov configuration files with GitHub Actions
+branding:
+  icon: check
+  color: green
+
+inputs:
+  file:
+    description: The location of the Codecov configuration file
+    required: false
+    default: .github/codecov.yml
+
+outputs:
+  status-code:
+    description: The HTTP status code returned by the Codecov API
+    value: ${{ steps.validate.outputs.status-code }}
+
+runs:
+  using: composite
+  steps:
+    - name: Validate Codecov configuration file
+      id: validate
+      run: $GITHUB_ACTION_PATH/validate.sh
+      shell: bash
+      env:
+        FILE: ${{ inputs.file }}
+        GITHUB_OUTPUT: $GITHUB_OUTPUT

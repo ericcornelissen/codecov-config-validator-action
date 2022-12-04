@@ -1,0 +1,10 @@
+# This file provides types for "GitHub Actions Kotlin DSL".
+# See https://github.com/krzema12/github-actions-kotlin-dsl
+
+inputs:
+  file:
+    type: string
+
+outputs:
+  status-code:
+    type: string
