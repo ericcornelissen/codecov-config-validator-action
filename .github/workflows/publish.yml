@@ -39,9 +39,10 @@ jobs:
         run: |
           git push origin HEAD:${{ steps.major_version.outputs.result }} --force
       - name: Create GitHub Release
-        uses: ncipollo/release-action@18eadf9c9b0f226f47f164f5373c6a44f0aae169 # tag=v1.11.2
+        uses: ncipollo/release-action@a2e71bdd4e7dab70ca26a852f29600c98b33153e # v1.12.0
         with:
           name: Release ${{ steps.version.outputs.result }}
           tag: ${{ steps.version.outputs.result }}
           draft: false
+          makeLatest: true
           prerelease: false
