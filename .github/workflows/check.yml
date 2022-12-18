@@ -10,7 +10,7 @@ permissions: read-all
 jobs:
   markdown:
     name: MarkDown
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
@@ -20,7 +20,7 @@ jobs:
         run: make lint-md
   secrets:
     name: Secrets
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
@@ -35,7 +35,7 @@ jobs:
           GITLEAKS_ENABLE_SUMMARY: false
   shell:
     name: Shell scripts
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
@@ -43,7 +43,7 @@ jobs:
         run: make lint-sh
   types:
     name: Types
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
@@ -51,7 +51,7 @@ jobs:
         uses: krzema12/github-actions-typing@c62d4007d3d5d487152f92af8b595bb6b4a10d6f # v0.6.0
   yaml:
     name: YAML
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b # v3.2.0
