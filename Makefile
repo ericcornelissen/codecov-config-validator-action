@@ -13,7 +13,7 @@ help: ## Show this help message
 		printf "  \033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
-lint-ci: $(ASDF) ## Lint CI workflows
+lint-ci: ## Lint CI workflows
 	@actionlint
 
 lint-md: ## Lint .md files
