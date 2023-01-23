@@ -13,6 +13,9 @@ help: ## Show this help message
 		printf "  \033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
+lint-ci: ## Lint CI workflows
+	@actionlint
+
 lint-md: ## Lint .md files
 	@markdownlint \
 		--config .markdownlint.yml \
@@ -46,4 +49,4 @@ test-run: ## Run the action locally
 		./validate.sh \
 	)
 
-.PHONY: clean default help lint-md lint-sh lint-yml release test-run
+.PHONY: clean default help lint-ci lint-md lint-sh lint-yml release test-run
