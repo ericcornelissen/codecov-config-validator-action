@@ -43,6 +43,7 @@ jobs:
         uses: asdf-vm/actions/setup@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
       - name: Add plugins
         run: |
+          asdf plugin add actionlint https://github.com/crazy-matt/asdf-actionlint.git
           asdf plugin add shellcheck https://github.com/luizm/asdf-shellcheck.git
           asdf plugin add yamllint https://github.com/ericcornelissen/asdf-yamllint
       - name: Install tooling
@@ -67,6 +68,7 @@ jobs:
         uses: asdf-vm/actions/setup@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
       - name: Add plugins
         run: |
+          asdf plugin add actionlint https://github.com/crazy-matt/asdf-actionlint.git
           asdf plugin add shellcheck https://github.com/luizm/asdf-shellcheck.git
           asdf plugin add yamllint https://github.com/ericcornelissen/asdf-yamllint
       - name: Install tooling
