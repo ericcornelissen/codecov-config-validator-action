@@ -6,6 +6,17 @@ clean: ## Clean the repository
 	@git clean -fx \
 		$(GITHUB_OUTPUT)
 
+format: ## Format the source code
+	@shfmt \
+		--simplify \
+		--write \
+		validate.sh
+
+format-check: ## Check the source code formatting
+	@shfmt \
+		--diff \
+		validate.sh
+
 help: ## Show this help message
 	@printf "Usage: make <command>\n\n"
 	@printf "Commands:\n"
@@ -49,4 +60,4 @@ test-run: ## Run the action locally
 		./validate.sh \
 	)
 
-.PHONY: clean default help lint-ci lint-md lint-sh lint-yml release test-run
+.PHONY: clean default format format-check help lint-ci lint-md lint-sh lint-yml release test-run
