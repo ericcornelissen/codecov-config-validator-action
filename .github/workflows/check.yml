@@ -20,6 +20,7 @@ jobs:
         run: |
           asdf plugin add actionlint https://github.com/crazy-matt/asdf-actionlint.git
           asdf plugin add shellcheck https://github.com/luizm/asdf-shellcheck.git
+          asdf plugin add shfmt https://github.com/luizm/asdf-shfmt
           asdf plugin add yamllint https://github.com/ericcornelissen/asdf-yamllint
       - name: Install tooling
         uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
@@ -62,11 +63,14 @@ jobs:
         run: |
           asdf plugin add actionlint https://github.com/crazy-matt/asdf-actionlint.git
           asdf plugin add shellcheck https://github.com/luizm/asdf-shellcheck.git
+          asdf plugin add shfmt https://github.com/luizm/asdf-shfmt
           asdf plugin add yamllint https://github.com/ericcornelissen/asdf-yamllint
       - name: Install tooling
         uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
       - name: Lint
         run: make lint-sh
+      - name: Format
+        run: make format-check
   types:
     name: Types
     runs-on: ubuntu-22.04
@@ -87,6 +91,7 @@ jobs:
         run: |
           asdf plugin add actionlint https://github.com/crazy-matt/asdf-actionlint.git
           asdf plugin add shellcheck https://github.com/luizm/asdf-shellcheck.git
+          asdf plugin add shfmt https://github.com/luizm/asdf-shfmt
           asdf plugin add yamllint https://github.com/ericcornelissen/asdf-yamllint
       - name: Install tooling
         uses: asdf-vm/actions/install@707e84f3ee349548310aeabdad0dd3bfcb9b69fa # v1.1.0
