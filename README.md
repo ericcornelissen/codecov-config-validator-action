@@ -21,9 +21,15 @@ _See the [steps context] documentation for how to use output values._
 
 - `status-code`: The HTTP status code returned by the Codecov API.
 
-## Permissions
+## Security
+
+### Permissions
 
 This Action requires no [permissions].
+
+### Network
+
+This Action requires network access to the endpoint `codecov.io:443`.
 
 ## License
 
