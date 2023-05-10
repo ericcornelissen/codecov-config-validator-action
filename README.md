@@ -33,14 +33,16 @@ This Action requires network access to the endpoint `codecov.io:443`.
 
 ## License
 
-This project is licensed under the Mozilla Public License 2.0, see [LICENSE] for
-the full license text.
+All source code is licensed under the Mozilla Public License 2.0 license, see
+[LICENSE] for the full license text. The contents of documentation is licensed
+under [CC BY-SA 4.0].
 
 ---
 
 Please [open an issue] if you found a mistake or if you have a suggestion for
 how to improve the documentation.
 
+[cc by-sa 4.0]: https://creativecommons.org/licenses/by-sa/4.0/
 [codecov]: https://codecov.io/
 [license]: ./LICENSE
 [open an issue]: https://github.com/ericcornelissen/codecov-config-validator-action/issues/new?labels=documentation
