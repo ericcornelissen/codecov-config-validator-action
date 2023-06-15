@@ -1,0 +1,20 @@
+name: Tooling
+on:
+  schedule:
+    - cron: 0 5 * * *
+  workflow_dispatch: ~
+
+permissions: read-all
+
+jobs:
+  tooling:
+    name: Update tooling
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # To push a commit
+      pull-requests: write # To open a Pull Request
+    steps:
+      - name: Update tooling
+        uses: ericcornelissen/tool-versions-update-action@9c487be028e21aac02daeec168ea23844006cdf1 # v0.1.0
+        with:
+          max: 1
