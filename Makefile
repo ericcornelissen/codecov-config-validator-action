@@ -1,11 +1,14 @@
 GITHUB_OUTPUT:=github_output
 
+.PHONY: default
 default: help
 
+.PHONY: clean
 clean: ## Clean the repository
 	@git clean -fx \
 		$(GITHUB_OUTPUT)
 
+.PHONY: format format-check
 format: ## Format the source code
 	@shfmt \
 		--simplify \
@@ -17,12 +20,16 @@ format-check: ## Check the source code formatting
 		--diff \
 		validate.sh
 
+.PHONY: help
 help: ## Show this help message
 	@printf "Usage: make <command>\n\n"
 	@printf "Commands:\n"
 	@awk -F ':(.*)## ' '/^[a-zA-Z0-9%\\\/_.-]+:(.*)##/ { \
 		printf "  \033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
+
+.PHONY: lint lint-ci lint-sh lint-yml
+lint: lint-ci lint-sh lint-yml ## Run lint-*
 
 lint-ci: ## Lint CI workflows
 	@actionlint
@@ -36,14 +43,19 @@ lint-yml: ## Lint .yml files
 		-c .yamllint.yml \
 		.
 
+.PHONY: release
 release: ## Release a new version
-ifeq "$v" ""
+ifneq "$(shell git branch --show-current)" "main"
+	@echo 'refusing to release, not on main branch'
+	@echo 'first run: "git switch main"'
+else ifeq "$v" ""
 	@echo 'usage: "make release v=1.0.1"'
 else
 	@git tag "v$v"
 	@git push origin "v$v"
 endif
 
+.PHONY: test-run
 test-run: ## Run the action locally
 	@rm -f ${GITHUB_OUTPUT}
 	@touch ${GITHUB_OUTPUT}
@@ -53,4 +65,5 @@ test-run: ## Run the action locally
 		./validate.sh \
 	)
 
-.PHONY: clean default format format-check help lint-ci lint-md lint-sh lint-yml release test-run
+.PHONY: verify
+verify: format-check lint ## Verify project is in a good state
