@@ -16,7 +16,7 @@ echo '::group::Codecov API response'
 for t in "${RESPONSE_LINES[@]::${#RESPONSE_LINES[@]}-1}"; do
 	echo "${t}"
 done
-echo '::endgroup'
+echo '::endgroup::'
 
 if [ "${RESPONSE_CODE}" == "200" ]; then
 	echo "Codecov configuration is valid."
