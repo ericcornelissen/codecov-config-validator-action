@@ -28,8 +28,8 @@ help: ## Show this help message
 		printf "  \033[36m%-30s\033[0m %s\n", $$1, $$NF \
 	}' $(MAKEFILE_LIST)
 
-.PHONY: lint lint-ci lint-md lint-sh lint-yml
-lint: lint-ci lint-md lint-sh lint-yml
+.PHONY: lint lint-ci lint-sh lint-yml
+lint: lint-ci lint-sh lint-yml ## Run lint-*
 
 lint-ci: ## Lint CI workflows
 	@actionlint
@@ -66,4 +66,4 @@ test-run: ## Run the action locally
 	)
 
 .PHONY: verify
-verify: format-check lint
+verify: format-check lint ## Verify project is in a good state
