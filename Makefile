@@ -27,13 +27,6 @@ help: ## Show this help message
 lint-ci: ## Lint CI workflows
 	@actionlint
 
-lint-md: ## Lint .md files
-	@markdownlint \
-		--config .markdownlint.yml \
-		--dot \
-		--ignore-path .gitignore \
-		.
-
 lint-sh: ## Lint .sh files
 	@shellcheck \
 		validate.sh
