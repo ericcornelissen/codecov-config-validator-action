@@ -8,6 +8,14 @@ debug() {
 	echo "::debug::$1"
 }
 
+group_start() {
+	echo "::group::$1"
+}
+
+group_end() {
+	echo "::endgroup::"
+}
+
 # ---------------------------------------------------------------------------- #
 
 debug 'Sending API request to Codecov API'
@@ -26,11 +34,11 @@ RESPONSE_CODE=${RESPONSE_LINES[-1]}
 echo "status-code=${RESPONSE_CODE}" >>"${GITHUB_OUTPUT}"
 
 debug 'Logging response body'
-echo '::group::Codecov API response'
+group_start 'Codecov API response'
 for t in "${RESPONSE_LINES[@]::${#RESPONSE_LINES[@]}-1}"; do
 	info "${t}"
 done
-echo '::endgroup::'
+group_end
 
 debug 'Evaluating result'
 if [ "${RESPONSE_CODE}" == "200" ]; then
