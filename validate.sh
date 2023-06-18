@@ -1,5 +1,12 @@
 #!/bin/bash
 
+debug() {
+	echo "::debug::$1"
+}
+
+# ---------------------------------------------------------------------------- #
+
+debug 'Sending API request to Codecov API'
 RESPONSE=$(
 	curl --silent \
 		--write-out "%{http_code}" \
@@ -7,17 +14,21 @@ RESPONSE=$(
 		https://codecov.io/validate
 )
 
+debug 'Mapping response to an array of lines'
 mapfile -t RESPONSE_LINES <<<"${RESPONSE}"
 
+debug 'Extracting response code from response'
 RESPONSE_CODE=${RESPONSE_LINES[-1]}
 echo "status-code=${RESPONSE_CODE}" >>"${GITHUB_OUTPUT}"
 
+debug 'Logging response body'
 echo '::group::Codecov API response'
 for t in "${RESPONSE_LINES[@]::${#RESPONSE_LINES[@]}-1}"; do
 	echo "${t}"
 done
 echo '::endgroup::'
 
+debug 'Evaluating result'
 if [ "${RESPONSE_CODE}" == "200" ]; then
 	echo "Codecov configuration is valid."
 	exit 0
