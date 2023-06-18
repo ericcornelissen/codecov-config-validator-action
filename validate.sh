@@ -23,8 +23,8 @@ echo "status-code=${RESPONSE_CODE}" >>"${GITHUB_OUTPUT}"
 
 debug 'Logging response body'
 echo '::group::Codecov API response'
-for t in "${RESPONSE_LINES[@]::${#RESPONSE_LINES[@]}-1}"; do
-	echo "${t}"
+for line in "${RESPONSE_LINES[@]::${#RESPONSE_LINES[@]}-1}"; do
+	echo "${line}"
 done
 echo '::endgroup::'
 
