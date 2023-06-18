@@ -16,6 +16,10 @@ group_end() {
 	echo "::endgroup::"
 }
 
+set_output() {
+	echo "$1=$2" >>"${GITHUB_OUTPUT}"
+}
+
 # ---------------------------------------------------------------------------- #
 
 debug 'Sending API request to Codecov API'
@@ -31,7 +35,7 @@ mapfile -t RESPONSE_LINES <<<"${RESPONSE}"
 
 debug 'Extracting response code from response'
 RESPONSE_CODE=${RESPONSE_LINES[-1]}
-echo "status-code=${RESPONSE_CODE}" >>"${GITHUB_OUTPUT}"
+set_output 'status-code' "${RESPONSE_CODE}"
 
 debug 'Logging response body'
 group_start 'Codecov API response'
