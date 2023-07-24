@@ -15,6 +15,40 @@ A GitHub action to validate [Codecov] configuration files.
     file: path/to/codecov.yml
 ```
 
+### Recommended Workflow
+
+This workflow is recommended because it minimizes how often the Codecov config
+is validated.
+
+```yml
+# .github/workflows/config-codecov.yml
+
+name: Codecov Config
+on:
+  pull_request:
+    paths:
+      - .github/workflows/config-codecov.yml
+      - .github/codecov.yml
+  push:
+    branches:
+      - main # default branch
+    paths:
+      - .github/workflows/config-codecov.yml
+      - .github/codecov.yml
+
+permissions: read-all
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ericcornelissen/codecov-config-validator-action@v1
+        with:
+          file: .github/codecov.yml
+```
+
 ## Outputs
 
 _See the [steps context] documentation for how to use output values._
