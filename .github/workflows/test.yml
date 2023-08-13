@@ -30,7 +30,9 @@ jobs:
         with:
           file: testdata/codecov.yml
       - name: Check outputs
+        env:
+          STATUS_CODE: ${{ steps.test.outputs.status-code }}
         run: |
-          if [ "${{ steps.test.outputs.status-code }}" != "200" ]; then
+          if [ "${STATUS_CODE}" != "200" ]; then
             exit 1
           fi
