@@ -55,11 +55,26 @@ else
 	@git push origin "v$v"
 endif
 
-.PHONY: test-run
+.PHONY: test test-run
+test:
+	@echo 'Starting mock server...'
+	@docker run \
+		--rm \
+		--detach \
+		--name "mock-codecov-api" \
+		--volume "./testdata/nginx.conf:/etc/nginx/nginx.conf:ro" \
+		--publish "8080:80" \
+		nginx
+	@echo 'Running tests...'
+	@./test/run-tests.sh test/test_*.sh
+	@echo 'Stopping mock server...'
+	@docker stop "mock-codecov-api"
+
 test-run: ## Run the action locally
 	@rm -f ${GITHUB_OUTPUT}
 	@touch ${GITHUB_OUTPUT}
 	@( \
+		API_URL="https://codecov.io" \
 		FILE="testdata/codecov.yml" \
 		GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
 		./validate.sh \

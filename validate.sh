@@ -27,7 +27,7 @@ RESPONSE=$(
 	curl --silent \
 		--write-out '%{http_code}' \
 		--data-binary "@./${FILE}" \
-		https://codecov.io/validate
+		"${API_URL}/validate"
 )
 
 debug 'Mapping response to an array of lines'
