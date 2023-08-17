@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 12
+PLAN 13
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-unexpected'
@@ -35,6 +35,7 @@ OGREP '^::debug::Evaluating result$'
 OGREP '^Codecov configuration validation state unknown (got 201).$'
 OGREP '^If this persists open an issue at:$'
 OGREP '^https://github.com/ericcornelissen/codecov-config-validator-action/issues/new$'
+NEGREP .
 
 # --- TEARDOWN --------------------------------------------------------------- #
 docker stop "${SERVER_NAME}" >/dev/null

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 10
+PLAN 11
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-valid'
@@ -33,6 +33,7 @@ OGREP '^::group::Codecov API response$'
 OGREP '^::endgroup::$'
 OGREP '^::debug::Evaluating result$'
 OGREP '^Codecov configuration is valid.$'
+NEGREP .
 
 # --- TEARDOWN --------------------------------------------------------------- #
 docker stop "${SERVER_NAME}" >/dev/null

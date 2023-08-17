@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 12
+PLAN 13
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-error'
@@ -35,6 +35,7 @@ OGREP '^::debug::Evaluating result$'
 OGREP '^Codecov configuration could not be validated (got 500).$'
 OGREP '^You can try to rerun this job after a short delay and it should pass then.$'
 OGREP '^If the exact response code 500 persists, verify Codecov does not have an outage.$'
+NEGREP .
 
 # --- TEARDOWN --------------------------------------------------------------- #
 docker stop "${SERVER_NAME}" >/dev/null
