@@ -1,5 +1,7 @@
 # Check out ShellCheck at: https://www.shellcheck.net/
 
+disable=SC1091
+
 enable=add-default-case
 enable=avoid-nullary-conditions
 enable=deprecate-which

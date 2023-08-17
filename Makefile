@@ -1,3 +1,6 @@
+TEST_FILES:=test/test_*.sh
+SHELL_SCRIPTS:=validate.sh $(TEST_FILES)
+
 GITHUB_OUTPUT:=github_output
 
 .PHONY: default
@@ -13,12 +16,12 @@ format: ## Format the source code
 	@shfmt \
 		--simplify \
 		--write \
-		validate.sh
+		$(SHELL_SCRIPTS)
 
 format-check: ## Check the source code formatting
 	@shfmt \
 		--diff \
-		validate.sh
+		$(SHELL_SCRIPTS)
 
 .PHONY: help
 help: ## Show this help message
@@ -36,7 +39,7 @@ lint-ci: ## Lint CI workflows
 
 lint-sh: ## Lint .sh files
 	@shellcheck \
-		validate.sh
+		$(SHELL_SCRIPTS)
 
 lint-yml: ## Lint .yml files
 	@yamllint \
@@ -56,19 +59,11 @@ else
 endif
 
 .PHONY: test test-run
-test:
-	@echo 'Starting mock server...'
-	@docker run \
-		--rm \
-		--detach \
-		--name "mock-codecov-api" \
-		--volume "./testdata/nginx.conf:/etc/nginx/nginx.conf:ro" \
-		--publish "8080:80" \
-		nginx
-	@echo 'Running tests...'
-	@./test/run-tests.sh test/test_*.sh
-	@echo 'Stopping mock server...'
-	@docker stop "mock-codecov-api"
+test: ## Run the automated tests
+	@test/test_error.sh
+	@test/test_invalid.sh
+	@test/test_valid.sh
+	@test/test_unexpected.sh
 
 test-run: ## Run the action locally
 	@rm -f ${GITHUB_OUTPUT}
@@ -81,4 +76,4 @@ test-run: ## Run the action locally
 	)
 
 .PHONY: verify
-verify: format-check lint ## Verify project is in a good state
+verify: format-check lint test ## Verify project is in a good state
