@@ -18,6 +18,7 @@ docker run --rm --detach \
 	--volume './testdata/nginx-invalid.conf:/etc/nginx/nginx.conf:ro' \
 	--publish "${SERVER_PORT}:80" \
 	nginx >/dev/null
+sleep 1s
 
 # --- RUN -------------------------------------------------------------------- #
 NRUNS ./validate.sh
