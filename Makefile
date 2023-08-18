@@ -60,9 +60,16 @@ endif
 
 .PHONY: test test-run
 test: ## Run the automated tests
-	@test/test_error.sh
-	@test/test_invalid.sh
+	@echo 'Testing valid config...'
 	@test/test_valid.sh
+	@echo ''
+	@echo 'Testing invalid config...'
+	@test/test_invalid.sh
+	@echo ''
+	@echo 'Testing server error...'
+	@test/test_error.sh
+	@echo ''
+	@echo 'Testing unexpected response...'
 	@test/test_unexpected.sh
 
 test-run: ## Run the action locally
