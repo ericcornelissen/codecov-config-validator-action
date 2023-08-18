@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 12
+PLAN 14
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-invalid'
@@ -29,7 +29,8 @@ OGREP '^::debug::Mapping response to an array of lines$'
 OGREP '^::debug::Extracting response code from response$'
 OGREP '^::debug::Logging response body$'
 OGREP '^::group::Codecov API response$'
-# TODO: response
+OGREP '^Error at \['\''coverage'\'', '\''status'\'', '\''project'\'', '\''default'\''\]:$'
+OGREP '^must be of \['\''dict'\'', '\''boolean'\''\] type$'
 OGREP '^::endgroup::$'
 OGREP '^::debug::Evaluating result$'
 OGREP '^Codecov configuration is invalid (got 400).$'

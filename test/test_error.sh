@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 13
+PLAN 14
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-error'
@@ -29,7 +29,7 @@ OGREP '^::debug::Mapping response to an array of lines$'
 OGREP '^::debug::Extracting response code from response$'
 OGREP '^::debug::Logging response body$'
 OGREP '^::group::Codecov API response$'
-# TODO: response
+OGREP '^{"error": "Server Error (500)"}$'
 OGREP '^::endgroup::$'
 OGREP '^::debug::Evaluating result$'
 OGREP '^Codecov configuration could not be validated (got 500).$'

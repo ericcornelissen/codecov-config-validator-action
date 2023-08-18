@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 11
+PLAN 15
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-valid'
@@ -29,7 +29,10 @@ OGREP '^::debug::Mapping response to an array of lines$'
 OGREP '^::debug::Extracting response code from response$'
 OGREP '^::debug::Logging response body$'
 OGREP '^::group::Codecov API response$'
-# TODO: response
+OGREP '^Valid!$'
+OGREP '^{$'
+OGREP '^  "coverage": { }$'
+OGREP '^}$'
 OGREP '^::endgroup::$'
 OGREP '^::debug::Evaluating result$'
 OGREP '^Codecov configuration is valid.$'

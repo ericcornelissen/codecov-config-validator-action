@@ -29,7 +29,6 @@ OGREP '^::debug::Mapping response to an array of lines$'
 OGREP '^::debug::Extracting response code from response$'
 OGREP '^::debug::Logging response body$'
 OGREP '^::group::Codecov API response$'
-# TODO: response
 OGREP '^::endgroup::$'
 OGREP '^::debug::Evaluating result$'
 OGREP '^Codecov configuration validation state unknown (got 201).$'
