@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 14
+PLAN 4
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-error'
@@ -24,17 +24,18 @@ sleep 1s
 NRUNS ./validate.sh
 
 IS "$(cat "${GITHUB_OUTPUT}")" == 'status-code=500'
-OGREP '^::debug::Sending API request to Codecov API$'
-OGREP '^::debug::Mapping response to an array of lines$'
-OGREP '^::debug::Extracting response code from response$'
-OGREP '^::debug::Logging response body$'
-OGREP '^::group::Codecov API response$'
-OGREP '^{"error": "Server Error (500)"}$'
-OGREP '^::endgroup::$'
-OGREP '^::debug::Evaluating result$'
-OGREP '^Codecov configuration could not be validated (got 500).$'
-OGREP '^You can try to rerun this job after a short delay and it should pass then.$'
-OGREP '^If the exact response code 500 persists, verify Codecov does not have an outage.$'
+IS "$(cat "${OSHT_STDIO}")" == '::debug::Sending API request to Codecov API
+::debug::Mapping response to an array of lines
+::debug::Extracting response code from response
+::debug::Logging response body
+::group::Codecov API response
+{"error": "Server Error (500)"}
+::endgroup::
+::debug::Evaluating result
+Codecov configuration could not be validated (got 500).
+
+You can try to rerun this job after a short delay and it should pass then.
+If the exact response code 500 persists, verify Codecov does not have an outage.'
 NEGREP .
 
 # --- TEARDOWN --------------------------------------------------------------- #

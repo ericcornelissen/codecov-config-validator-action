@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 15
+PLAN 4
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-valid'
@@ -24,18 +24,19 @@ sleep 1s
 RUNS ./validate.sh
 
 IS "$(cat "${GITHUB_OUTPUT}")" == 'status-code=200'
-OGREP '^::debug::Sending API request to Codecov API$'
-OGREP '^::debug::Mapping response to an array of lines$'
-OGREP '^::debug::Extracting response code from response$'
-OGREP '^::debug::Logging response body$'
-OGREP '^::group::Codecov API response$'
-OGREP '^Valid!$'
-OGREP '^{$'
-OGREP '^  "coverage": { }$'
-OGREP '^}$'
-OGREP '^::endgroup::$'
-OGREP '^::debug::Evaluating result$'
-OGREP '^Codecov configuration is valid.$'
+IS "$(cat "${OSHT_STDIO}")" == '::debug::Sending API request to Codecov API
+::debug::Mapping response to an array of lines
+::debug::Extracting response code from response
+::debug::Logging response body
+::group::Codecov API response
+Valid!
+
+{
+  "coverage": { }
+}
+::endgroup::
+::debug::Evaluating result
+Codecov configuration is valid.'
 NEGREP .
 
 # --- TEARDOWN --------------------------------------------------------------- #

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 14
+PLAN 4
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-invalid'
@@ -24,17 +24,18 @@ sleep 1s
 NRUNS ./validate.sh
 
 IS "$(cat "${GITHUB_OUTPUT}")" == 'status-code=400'
-OGREP '^::debug::Sending API request to Codecov API$'
-OGREP '^::debug::Mapping response to an array of lines$'
-OGREP '^::debug::Extracting response code from response$'
-OGREP '^::debug::Logging response body$'
-OGREP '^::group::Codecov API response$'
-OGREP '^Error at \['\''coverage'\'', '\''status'\'', '\''project'\'', '\''default'\''\]:$'
-OGREP '^must be of \['\''dict'\'', '\''boolean'\''\] type$'
-OGREP '^::endgroup::$'
-OGREP '^::debug::Evaluating result$'
-OGREP '^Codecov configuration is invalid (got 400).$'
-OGREP "^Update the Codecov configuration file at ${FILE} to make it valid.$"
+IS "$(cat "${OSHT_STDIO}")" == '::debug::Sending API request to Codecov API
+::debug::Mapping response to an array of lines
+::debug::Extracting response code from response
+::debug::Logging response body
+::group::Codecov API response
+Error at \['\''coverage'\'', '\''status'\'', '\''project'\'', '\''default'\'']:
+must be of \['\''dict'\'', '\''boolean'\''] type
+::endgroup::
+::debug::Evaluating result
+Codecov configuration is invalid (got 400).
+
+Update the Codecov configuration file at '"${FILE}"' to make it valid.'
 NEGREP .
 
 # --- TEARDOWN --------------------------------------------------------------- #

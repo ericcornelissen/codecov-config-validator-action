@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source ./test/osht.sh
 
-PLAN 13
+PLAN 4
 
 # --- SETUP ------------------------------------------------------------------ #
 SERVER_NAME='mock-codecov-api-unexpected'
@@ -24,16 +24,17 @@ sleep 1s
 NRUNS ./validate.sh
 
 IS "$(cat "${GITHUB_OUTPUT}")" == 'status-code=201'
-OGREP '^::debug::Sending API request to Codecov API$'
-OGREP '^::debug::Mapping response to an array of lines$'
-OGREP '^::debug::Extracting response code from response$'
-OGREP '^::debug::Logging response body$'
-OGREP '^::group::Codecov API response$'
-OGREP '^::endgroup::$'
-OGREP '^::debug::Evaluating result$'
-OGREP '^Codecov configuration validation state unknown (got 201).$'
-OGREP '^If this persists open an issue at:$'
-OGREP '^https://github.com/ericcornelissen/codecov-config-validator-action/issues/new$'
+IS "$(cat "${OSHT_STDIO}")" == '::debug::Sending API request to Codecov API
+::debug::Mapping response to an array of lines
+::debug::Extracting response code from response
+::debug::Logging response body
+::group::Codecov API response
+::endgroup::
+::debug::Evaluating result
+Codecov configuration validation state unknown (got 201).
+
+If this persists open an issue at:
+https://github.com/ericcornelissen/codecov-config-validator-action/issues/new'
 NEGREP .
 
 # --- TEARDOWN --------------------------------------------------------------- #
