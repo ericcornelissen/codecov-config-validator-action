@@ -1,3 +1,6 @@
+TEST_FILES:=test/test_*.sh
+SHELL_SCRIPTS:=validate.sh $(TEST_FILES)
+
 GITHUB_OUTPUT:=github_output
 
 .PHONY: default
@@ -13,12 +16,12 @@ format: ## Format the source code
 	@shfmt \
 		--simplify \
 		--write \
-		validate.sh
+		$(SHELL_SCRIPTS)
 
 format-check: ## Check the source code formatting
 	@shfmt \
 		--diff \
-		validate.sh
+		$(SHELL_SCRIPTS)
 
 .PHONY: help
 help: ## Show this help message
@@ -36,7 +39,7 @@ lint-ci: ## Lint CI workflows
 
 lint-sh: ## Lint .sh files
 	@shellcheck \
-		validate.sh
+		$(SHELL_SCRIPTS)
 
 lint-yml: ## Lint .yml files
 	@yamllint \
@@ -55,15 +58,29 @@ else
 	@git push origin "v$v"
 endif
 
-.PHONY: test-run
+.PHONY: test test-run
+test: ## Run the automated tests
+	@echo 'Testing valid config...'
+	@test/test_valid.sh
+	@echo ''
+	@echo 'Testing invalid config...'
+	@test/test_invalid.sh
+	@echo ''
+	@echo 'Testing server error...'
+	@test/test_error.sh
+	@echo ''
+	@echo 'Testing unexpected response...'
+	@test/test_unexpected.sh
+
 test-run: ## Run the action locally
 	@rm -f ${GITHUB_OUTPUT}
 	@touch ${GITHUB_OUTPUT}
 	@( \
+		API_URL="https://codecov.io" \
 		FILE="testdata/codecov.yml" \
 		GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
 		./validate.sh \
 	)
 
 .PHONY: verify
-verify: format-check lint ## Verify project is in a good state
+verify: format-check lint test ## Verify project is in a good state

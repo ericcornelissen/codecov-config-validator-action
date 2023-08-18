@@ -23,5 +23,6 @@ runs:
       run: $GITHUB_ACTION_PATH/validate.sh
       shell: bash
       env:
+        API_URL: https://codecov.io
         FILE: ${{ inputs.file }}
         GITHUB_OUTPUT: $GITHUB_OUTPUT
