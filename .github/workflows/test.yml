@@ -3,7 +3,8 @@ on:
   pull_request:
     paths:
       - .github/workflows/test.yml
-      - testdata/codecov.yml
+      - testdata/**
+      - test/**
       - action.yml
       - validate.sh
   push:
@@ -11,7 +12,8 @@ on:
       - main
     paths:
       - .github/workflows/test.yml
-      - testdata/codecov.yml
+      - testdata/**
+      - test/**
       - action.yml
       - validate.sh
 
