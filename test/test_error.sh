@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 source ./test/osht.sh
 
 PLAN 4
