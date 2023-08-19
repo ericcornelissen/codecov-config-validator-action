@@ -25,6 +25,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
       - name: Run tests
+        if: ${{ !env.ACT }}
         run: make test
   e2e:
     name: End-to-end
