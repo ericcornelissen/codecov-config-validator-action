@@ -58,7 +58,7 @@ else
 	@git push origin "v$v"
 endif
 
-.PHONY: test test-run
+.PHONY: test test-e2e test-run
 test: ## Run the automated tests
 	@echo 'Testing valid config...'
 	@test/test_valid.sh
@@ -71,6 +71,9 @@ test: ## Run the automated tests
 	@echo ''
 	@echo 'Testing unexpected response...'
 	@test/test_unexpected.sh
+
+test-e2e: ## Run the end-to-end tests
+	@act --job e2e
 
 test-run: ## Run the action locally
 	@rm -f ${GITHUB_OUTPUT}
