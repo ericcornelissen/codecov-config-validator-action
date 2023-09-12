@@ -5,7 +5,7 @@ A GitHub action to validate [Codecov] configuration files.
 ## Usage
 
 ```yml
-- uses: actions/checkout@v3
+- uses: actions/checkout@v4
 - uses: ericcornelissen/codecov-config-validator-action@v1
   with:
     # Provide a path to the location of the Codecov configuration file.
@@ -43,7 +43,7 @@ jobs:
     name: Validate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ericcornelissen/codecov-config-validator-action@v1
         with:
           file: .github/codecov.yml
