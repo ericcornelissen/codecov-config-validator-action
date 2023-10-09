@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
       - name: Install asdf
-        uses: asdf-vm/actions/setup@6a442392015fbbdd8b48696d41e0051b2698b2e4 # v2.2.0
+        uses: asdf-vm/actions/setup@4f8f7939dd917fc656bb7c3575969a5988c28364 # v3.0.0
       - name: Add plugins
         run: |
           asdf plugin add actionlint https://github.com/crazy-matt/asdf-actionlint.git
@@ -23,7 +23,7 @@ jobs:
           asdf plugin add shfmt https://github.com/luizm/asdf-shfmt
           asdf plugin add yamllint https://github.com/ericcornelissen/asdf-yamllint
       - name: Install tooling
-        uses: asdf-vm/actions/install@6a442392015fbbdd8b48696d41e0051b2698b2e4 # v2.2.0
+        uses: asdf-vm/actions/install@4f8f7939dd917fc656bb7c3575969a5988c28364 # v3.0.0
       - name: Lint
         run: make lint-ci
   secrets:
@@ -48,7 +48,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
       - name: Install asdf
-        uses: asdf-vm/actions/setup@6a442392015fbbdd8b48696d41e0051b2698b2e4 # v2.2.0
+        uses: asdf-vm/actions/setup@4f8f7939dd917fc656bb7c3575969a5988c28364 # v3.0.0
       - name: Add plugins
         run: |
           asdf plugin add actionlint https://github.com/crazy-matt/asdf-actionlint.git
@@ -56,7 +56,7 @@ jobs:
           asdf plugin add shfmt https://github.com/luizm/asdf-shfmt
           asdf plugin add yamllint https://github.com/ericcornelissen/asdf-yamllint
       - name: Install tooling
-        uses: asdf-vm/actions/install@6a442392015fbbdd8b48696d41e0051b2698b2e4 # v2.2.0
+        uses: asdf-vm/actions/install@4f8f7939dd917fc656bb7c3575969a5988c28364 # v3.0.0
       - name: Lint
         run: make lint-sh
       - name: Format
@@ -76,7 +76,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
       - name: Install asdf
-        uses: asdf-vm/actions/setup@6a442392015fbbdd8b48696d41e0051b2698b2e4 # v2.2.0
+        uses: asdf-vm/actions/setup@4f8f7939dd917fc656bb7c3575969a5988c28364 # v3.0.0
       - name: Add plugins
         run: |
           asdf plugin add actionlint https://github.com/crazy-matt/asdf-actionlint.git
@@ -84,6 +84,6 @@ jobs:
           asdf plugin add shfmt https://github.com/luizm/asdf-shfmt
           asdf plugin add yamllint https://github.com/ericcornelissen/asdf-yamllint
       - name: Install tooling
-        uses: asdf-vm/actions/install@6a442392015fbbdd8b48696d41e0051b2698b2e4 # v2.2.0
+        uses: asdf-vm/actions/install@4f8f7939dd917fc656bb7c3575969a5988c28364 # v3.0.0
       - name: Lint
         run: make lint-yml
