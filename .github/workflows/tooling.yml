@@ -14,8 +14,15 @@ jobs:
       contents: write # To push a commit
       pull-requests: write # To open a Pull Request
     steps:
+      - name: Create token to create Pull Request
+        uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
+        id: automation-token
+        with:
+          app_id: ${{ secrets.AUTOMATION_ID }}
+          private_key: ${{ secrets.AUTOMATION_PRIVATE_KEY }}
       - name: Update tooling
         uses: ericcornelissen/tool-versions-update-action/pr@80dab8d99cefefdcfcc6ad4adbb6bc7a07c39e7f # v0.3.7
         with:
           labels: dependencies
           max: 1
+          token: ${{ steps.automation-token.outputs.token }}
