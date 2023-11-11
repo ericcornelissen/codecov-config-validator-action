@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+
 # Security Policy
 
 The maintainers of the _Codecov Config Validator Action_ take security issues
