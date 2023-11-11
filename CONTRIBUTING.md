@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC0-1.0 -->
+
 # Contributing Guidelines
 
 The maintainers of the _Codecov Config Validator Action_ welcome contributions

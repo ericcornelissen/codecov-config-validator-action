@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: MPL-2.0
 
 info() {
 	echo "$1"

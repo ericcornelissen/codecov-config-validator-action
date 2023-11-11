@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: CC-BY-SA-4.0 -->
+
 # Codecov Config Validator Action
 
 A GitHub action to validate [Codecov] configuration files.
