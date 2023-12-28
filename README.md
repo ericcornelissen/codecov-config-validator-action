@@ -57,6 +57,12 @@ _See the [steps context] documentation for how to use output values._
 
 - `status-code`: The HTTP status code returned by the Codecov API.
 
+## Runners
+
+This action is tested on the official [`ubuntu-20.04`] and [`ubuntu-22.04`]
+runner images. It is recommended to use one of these images when using this
+action.
+
 ## Security
 
 ### Permissions
@@ -84,3 +90,5 @@ how to improve the documentation.
 [open an issue]: https://github.com/ericcornelissen/codecov-config-validator-action/issues/new?labels=documentation
 [permissions]: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
 [steps context]: https://docs.github.com/en/actions/learn-github-actions/contexts#steps-context
+[`ubuntu-20.04`]: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md
+[`ubuntu-22.04`]: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
