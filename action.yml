@@ -20,7 +20,7 @@ runs:
   steps:
     - name: Validate Codecov configuration file
       id: validate
-      run: $GITHUB_ACTION_PATH/validate.sh
+      run: $GITHUB_ACTION_PATH/bin/validate.sh
       shell: bash
       env:
         API_URL: https://codecov.io

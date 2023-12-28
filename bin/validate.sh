@@ -1,25 +1,8 @@
 #!/bin/bash
 # SPDX-License-Identifier: MPL-2.0
 
-info() {
-	echo "$1"
-}
-
-debug() {
-	echo "::debug::$1"
-}
-
-group_start() {
-	echo "::group::$1"
-}
-
-group_end() {
-	echo "::endgroup::"
-}
-
-set_output() {
-	echo "$1=$2" >>"${GITHUB_OUTPUT}"
-}
+# shellcheck source=./lib/actions.sh
+source "$(dirname "${BASH_SOURCE[0]}")/../lib/actions.sh"
 
 # ---------------------------------------------------------------------------- #
 

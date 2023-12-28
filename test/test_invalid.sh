@@ -22,7 +22,7 @@ docker run --rm --detach \
 sleep 1s
 
 # --- RUN -------------------------------------------------------------------- #
-NRUNS ./validate.sh
+NRUNS ./bin/validate.sh
 
 IS "$(cat "${GITHUB_OUTPUT}")" == 'status-code=400'
 IS "$(cat "${OSHT_STDIO}")" == '::debug::Sending API request to Codecov API

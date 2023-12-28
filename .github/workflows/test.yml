@@ -5,8 +5,9 @@ on:
       - .github/workflows/test.yml
       - testdata/**
       - test/**
+      - bin/*.sh
+      - lib/*.sh
       - action.yml
-      - validate.sh
   push:
     branches:
       - main
@@ -14,8 +15,9 @@ on:
       - .github/workflows/test.yml
       - testdata/**
       - test/**
+      - bin/*.sh
+      - lib/*.sh
       - action.yml
-      - validate.sh
 
 permissions: read-all
 
