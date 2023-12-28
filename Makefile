@@ -1,5 +1,5 @@
 TEST_FILES:=test/test_*.sh
-SHELL_SCRIPTS:=validate.sh $(TEST_FILES)
+SHELL_SCRIPTS:=bin/*.sh lib/*.sh $(TEST_FILES)
 
 GITHUB_OUTPUT:=github_output
 
@@ -79,7 +79,7 @@ test-run: ## Run the action locally
 		API_URL="https://codecov.io" \
 		FILE="testdata/codecov.yml" \
 		GITHUB_OUTPUT="${GITHUB_OUTPUT}" \
-		./validate.sh \
+		./bin/validate.sh \
 	)
 
 .PHONY: verify
