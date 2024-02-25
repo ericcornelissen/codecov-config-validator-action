@@ -3,6 +3,8 @@ SHELL_SCRIPTS:=bin/*.sh lib/*.sh $(TEST_FILES)
 
 GITHUB_OUTPUT:=github_output
 
+SHELLCHECK_OPTS:='--enable=add-default-case --enable=avoid-nullary-conditions --enable=deprecate-which --enable=quote-safe-variables --enable=require-variable-braces'
+
 .PHONY: default
 default: help
 
@@ -35,10 +37,12 @@ help: ## Show this help message
 lint: lint-ci lint-sh lint-yml ## Run lint-*
 
 lint-ci: ## Lint CI workflows
-	@actionlint
+	@SHELLCHECK_OPTS=$(SHELLCHECK_OPTS) \
+		actionlint
 
 lint-sh: ## Lint .sh files
-	@shellcheck \
+	@SHELLCHECK_OPTS=$(SHELLCHECK_OPTS) \
+		shellcheck \
 		$(SHELL_SCRIPTS)
 
 lint-yml: ## Lint .yml files
