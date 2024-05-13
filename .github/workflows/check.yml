@@ -68,7 +68,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
       - name: Validate action types
-        uses: krzema12/github-actions-typing@c1af3441a3e80d0010be36aa0874f157a15f6a7f # v1.0.2
+        uses: krzema12/github-actions-typing@e9e977de7a340aa04bd5c19aa14ee69a85528522 # v1.0.3
   yaml:
     name: YAML
     runs-on: ubuntu-22.04
