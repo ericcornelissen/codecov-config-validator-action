@@ -10,7 +10,7 @@ permissions: read-all
 jobs:
   ci:
     name: CI Workflows
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -28,7 +28,7 @@ jobs:
         run: make lint-ci
   secrets:
     name: Secrets
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -43,7 +43,7 @@ jobs:
           GITLEAKS_ENABLE_SUMMARY: false
   shell:
     name: Shell scripts
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -63,7 +63,7 @@ jobs:
         run: make format-check
   types:
     name: Types
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
@@ -71,7 +71,7 @@ jobs:
         uses: krzema12/github-actions-typing@c1af3441a3e80d0010be36aa0874f157a15f6a7f # v1.0.2
   yaml:
     name: YAML
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633 # v4.1.2
