@@ -59,9 +59,9 @@ _See the [steps context] documentation for how to use output values._
 
 ## Runners
 
-This action is tested on the official [`ubuntu-20.04`] and [`ubuntu-22.04`]
-runner images. It is recommended to use one of these images when using this
-action.
+This action is tested on the official [`ubuntu-20.04`], [`ubuntu-22.04`], and
+[`ubuntu-24.04`] runner images. It is recommended to use one of these images
+when using this action.
 
 ## Security
 
@@ -92,3 +92,4 @@ how to improve the documentation.
 [steps context]: https://docs.github.com/en/actions/learn-github-actions/contexts#steps-context
 [`ubuntu-20.04`]: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md
 [`ubuntu-22.04`]: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md
+[`ubuntu-24.04`]: https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md
