@@ -53,3 +53,7 @@ set_output() {
 		echo "$1=$2" >>"${GITHUB_OUTPUT}"
 	fi
 }
+
+warn() {
+	awk '{print "::warning::"$0}' <<<"$1"
+}

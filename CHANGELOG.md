@@ -7,6 +7,7 @@ in this file.
 
 ## Changes
 
+- (2024-06-13) Set deprecation warning for project end-of-life.
 - (2023-06-18) Add debug logging.
 - (2023-06-17) Include the Codecov API response in the Action logs.
 - (2023-04-21) Improve Action output for non-`200` results.

@@ -4,6 +4,10 @@
 
 A GitHub action to validate [Codecov] configuration files.
 
+> [!WARNING]
+> Support for this Action will end 2024-10-11. We recommend finding an
+> alternative and to not start nor continue using this Action.
+
 ## Usage
 
 ```yml

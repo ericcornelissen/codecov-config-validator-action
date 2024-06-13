@@ -6,6 +6,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/../lib/actions.sh"
 
 # ---------------------------------------------------------------------------- #
 
+warn "This action is deprecated and support ends 2024-10-11"
+
 debug 'Sending API request to Codecov API'
 RESPONSE=$(
 	curl --silent \
