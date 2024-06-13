@@ -14,7 +14,7 @@ with security updates.
 
 | Version | End-of-life |
 | ------: | :---------- |
-|   1.x.x | -           |
+|   1.x.x | 2024-10-11  |
 
 _This table only includes information on versions `<2.0.0`._
 
