@@ -25,7 +25,7 @@ sleep 1s
 NRUNS ./bin/validate.sh
 
 IS "$(cat "${GITHUB_OUTPUT}")" == 'status-code=500'
-IS "$(cat "${OSHT_STDIO}")" == '::warning::This action is deprecated and support ends 2024-10-11
+IS "$(cat "${OSHT_STDIO}")" == '::error::This action is unsupported since 2024-10-11
 ::debug::Sending API request to Codecov API
 ::debug::Mapping response to an array of lines
 ::debug::Extracting response code from response
